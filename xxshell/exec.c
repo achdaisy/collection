@@ -26,7 +26,7 @@ void exec(char **arg, char **penviron)
 	else
 	{
 		wait(&p_status);
-		free(arg);
+		/*free(arg);*/
 	}
 	/*free(filepath);*/
 }

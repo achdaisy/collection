@@ -13,15 +13,14 @@ char **parser(char *buff)
 	char *arg1, *delim = " \n\t";
 	int n = BUFFSIZE, i;
 
+	if (buff == NULL)
+		return (NULL);	
 	if (buff[0] == ' ' && buff[strlen(buff) - 1] == ' ')
 		exit(0);
-	if (buff == NULL)
-		return (NULL);
-
 	args =malloc(sizeof(char *) * n);
 	if (args == NULL)
 	{
-		free(args);
+		/*free(args);*/
 		perror("Couldn't allocate memory");
 		return (NULL);
 	}
@@ -33,5 +32,6 @@ char **parser(char *buff)
 	}
 	args [i] = NULL;
 	/*free_arr(args);*/
+	/*free(args);*/
 	return (args);
 }

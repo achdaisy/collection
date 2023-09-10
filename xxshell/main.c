@@ -6,7 +6,7 @@
  * Return: 0 
  */
 
-int main(int argc, char **argv, char **penviron)
+int main(__attribute__((unused)) int argc, char **argv, char **penviron)
 {
 	char *input = NULL, **cmd_args = NULL;
 	/*char *filepath = NULL*/
@@ -14,7 +14,6 @@ int main(int argc, char **argv, char **penviron)
 	/*int i, terminal = isatty(0);*/
 	int incrementor = 0;
 	ssize_t chars_read = 0;
-	(void) argc;
 	(void) argv;
 
 	while(1)
@@ -24,7 +23,7 @@ int main(int argc, char **argv, char **penviron)
 			/*console_display();*/
 			printf("shell$ ");
 		chars_read = getline(&input, &n, stdin);
-		if (chars_read == -1) /*handles EOF*/
+		if (chars_read == -1)/*handles EOF*/
 		{
 			free_arr(cmd_args);
 			free(input);
@@ -37,13 +36,14 @@ int main(int argc, char **argv, char **penviron)
                         free(cmd_args);
                         continue;
                 }
-		/*for (i = 0; cmd_args[i] != NULL; i++)
+		/*if (access(cmd_args[0], X_OK) == -1)
 		{
-			printf("%s\n", cmd_args[i]);
+			printf("%s: %s No such file or directory\n", argv[0], cmd_args[0]);
 		}*/
 		exec(cmd_args, penviron);
+		free_arr(cmd_args);
 	}
 	free(input);
-	free_arr(cmd_args);
+	/*free_arr(cmd_args);*/
 	return (0);
 }
