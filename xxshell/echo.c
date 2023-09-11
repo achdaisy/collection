@@ -1,25 +1,29 @@
 #include "main.h"
 
 /**
- * echo - custom print function
+ * print_a_str - prints a string of characters
+ * @string: the string to be printed
  *
- * Return: void
+ * Return:nothing
  */
 
-/*void echo(const char *msg)
+void print_a_str(char *string)
 {
-	write(STDOUT_FILENO, msgPrompt, strlen(message));
+	while (*string != '\0')
+	{
+		print_a_char(*string);
+		string++;
+	}
 }
-*/
 
 /**
- * console_display - displays the user prompt
+ * print_a_char - prints a single character
+ * @a: the character to be written
  *
- * Return: void
+ * Return: 1 else -1
  */
 
-void console_display (void)
+int print_a_char(char a)
 {
-	char *prompt = "shell$";
-	(write(1, &prompt, strlen(prompt)));
+        return (write(1, &a, 1));
 }

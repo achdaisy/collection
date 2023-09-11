@@ -22,7 +22,7 @@ char **parser(char *buff)
 	{
 		/*free(args);*/
 		perror("Couldn't allocate memory");
-		return (NULL);
+		exit(2);
 	}
 	arg1 = strtok(buff, delim);
 	for (i = 0; arg1; i++)
