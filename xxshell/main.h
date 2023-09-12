@@ -11,7 +11,7 @@
 #include <fcntl.h>
 
 /*#define ARGS 8*/
-#define BUFFSIZE 1024
+#define BUFFSIZE 10000 /*making it large to avoid reallocs*/
 
 extern char **environ;
 
