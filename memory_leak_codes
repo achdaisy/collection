@@ -1,0 +1,4 @@
+gcc -fsanitize=address -g *.c -o hsh
+
+
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes -s ./hsh
