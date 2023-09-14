@@ -2,3 +2,8 @@ gcc -fsanitize=address -g *.c -o hsh
 
 
 valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes -s ./hsh
+
+
+echo "/bin/ls" | valgrind ./hsh
+---for this I have 4 allocs and 5 frees
+
