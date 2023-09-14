@@ -6,7 +6,7 @@
  * Return: nothing
  */
 
-void exec(char **arg, char **penviron)
+void exec(char *filepath, char **arg, char **penviron)
 {
 	pid_t new_process;
 	int p_status;
@@ -19,7 +19,9 @@ void exec(char **arg, char **penviron)
 	}
 	else if(new_process == 0)
 	{
-		execve(arg[0], arg, penviron);/*need to do some freeing*/
+		execve(filepath, arg, penviron);/*need to do some freeing*/
+		/*free(filepath);*/
+		free_arr(arg);
 		perror(arg[0]);
 		exit(2);
 	}
